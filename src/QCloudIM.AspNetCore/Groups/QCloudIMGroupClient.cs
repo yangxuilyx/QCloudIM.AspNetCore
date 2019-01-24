@@ -19,9 +19,39 @@ namespace QCloudIM.AspNetCore.Groups
         /// </summary>
         /// <param name="request"></param>
         /// <returns></returns>
-        public async Task<GetGroupListResult> GetGroupList(GetGroupListRequest request)
+        public async Task<GetGroupListResult> GetGroupListAsync(GetGroupListRequest request)
         {
             return await RequestAsync<GetGroupListRequest, GetGroupListResult>(ServiceName, "get_appid_group_list", request);
+        }
+
+        /// <summary>
+        /// 创建群组：create_group
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        public async Task<CreateGroupResult> CreateGroupAsync(CreateGroupRequest request)
+        {
+            return await RequestAsync<CreateGroupRequest, CreateGroupResult>(ServiceName, "create_group", request);
+        }
+
+        /// <summary>
+        /// 获取群组详细资料：get_group_info
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        public async Task<GetGroupInfoResult> GetGroupInfoAsync(GetGroupInfoRequest request)
+        {
+            return await RequestAsync<GetGroupInfoRequest, GetGroupInfoResult>(ServiceName, "get_group_info", request);
+        }
+
+        /// <summary>
+        /// 获取群成员详细资料：get_group_member_info
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        public async Task<GetGroupMemberInfoResult> GetGroupMemberInfoAsync(GetGroupMemberInfoRequest request)
+        {
+            return await RequestAsync<GetGroupMemberInfoRequest, GetGroupMemberInfoResult>(ServiceName, "get_group_member_info", request);
         }
 
         /// <summary>
