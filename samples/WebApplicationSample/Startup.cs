@@ -13,6 +13,7 @@ using Microsoft.Extensions.Options;
 using QCloudIM.AspNetCore;
 using QCloudIM.AspNetCore.Options;
 using QCloudIM.AspNetCore.Utility;
+using Swashbuckle.AspNetCore.Swagger;
 
 namespace WebApplicationSample
 {
@@ -31,7 +32,12 @@ namespace WebApplicationSample
         {
             services.AddQCloudIM(options =>
             {
+           
+            });
 
+            services.AddSwaggerGen(options =>
+            {
+                options.SwaggerDoc("v1", new Info { Title = "腾讯云服务端测试文档", Version = "v1" });
             });
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
@@ -45,7 +51,20 @@ namespace WebApplicationSample
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseMvc();
+            app.UseMvc(routes =>
+            {
+                routes.MapRoute(name: "default",
+                    template: "{controller=Home}/{action=Index}/{id?}");
+            });
+
+            //启用中间件服务生成Swagger作为JSON终结点
+            app.UseSwagger();
+            //启用中间件服务对swagger-ui，指定Swagger JSON终结点
+            app.UseSwaggerUI(c =>
+            {
+                c.RoutePrefix = string.Empty;
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "WebApplicationSample");
+            });
         }
     }
 }
