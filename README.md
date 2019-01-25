@@ -1,9 +1,15 @@
-# 简介
+## 简介
 
 QCloudIM.AspNetCore 是基于 .NET Core / ASP.NET Core 开发，实现腾讯云 IM 服务端 SDK 的调用。.Net Framework 版本请查看：<a href="https://github.com/antony10291029/QCloudIMSDK">
 https://github.com/antony10291029/QCloudIMSDK</a>
 
-# 使用方式
+## Package
+
+| Package             | NuGet                                                                                                                  |
+| ------------------- | ---------------------------------------------------------------------------------------------------------------------- |
+| QCloudIM.AspNetCore | [![NuGet](https://img.shields.io/nuget/v/QCloudIM.AspNetCore.svg)](https://www.nuget.org/packages/QCloudIM.AspNetCore) |
+
+## 使用方式
 
 1.引入项目
 
@@ -54,7 +60,7 @@ services.Configure<QCloudIMOption>(Configuration.GetSection("QCloudIM"));
         }
 ```
 
-# Client 说明
+## Client 说明
 
 Client 根据腾讯云通信服务端 REST API 定义，接口名称与官方 command 基本一致。官方文档：<a href="https://cloud.tencent.com/document/product/269/1520">https://cloud.tencent.com/document/product/269/1520</a>
 
