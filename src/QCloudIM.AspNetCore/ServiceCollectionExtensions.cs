@@ -22,7 +22,7 @@ namespace QCloudIM.AspNetCore
         /// <param name="service"></param>
         public static void AddQCloudIM(this IServiceCollection service)
         {
-            AddQCloudIM(null);
+            AddQCloudIM(service, null);
         }
         /// <summary>
         /// 添加QCloudIM
