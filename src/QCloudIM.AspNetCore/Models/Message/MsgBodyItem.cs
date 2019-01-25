@@ -5,8 +5,6 @@ using Newtonsoft.Json;
 
 namespace QCloudIM.AspNetCore.Models.Message
 {
-
-
     public class MsgBodyItem
     {
         [JsonProperty("MsgType")]

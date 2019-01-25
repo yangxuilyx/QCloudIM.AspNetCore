@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
 using QCloudIM.AspNetCore.Models.Groups;
 
-namespace QCloudIM.AspNetCore.Groups
+namespace QCloudIM.AspNetCore.Clients.Group
 {
     /// <summary>
     /// 群组管理接口

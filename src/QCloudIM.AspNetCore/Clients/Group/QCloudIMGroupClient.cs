@@ -1,9 +1,9 @@
 ﻿using System.Threading.Tasks;
 using Microsoft.Extensions.Options;
-using QCloudIM.AspNetCore.Options;
 using QCloudIM.AspNetCore.Models.Groups;
+using QCloudIM.AspNetCore.Options;
 
-namespace QCloudIM.AspNetCore.Groups
+namespace QCloudIM.AspNetCore.Clients.Group
 {
     /// <summary>
     /// 群组管理实现

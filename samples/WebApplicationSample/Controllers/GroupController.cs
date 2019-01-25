@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using QCloudIM.AspNetCore.Groups;
+using QCloudIM.AspNetCore.Clients.Group;
 using QCloudIM.AspNetCore.Models.Groups;
 
 namespace WebApplicationSample.Controllers
@@ -16,9 +16,21 @@ namespace WebApplicationSample.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<GetGroupListResult>> GetGroupListAsync(GetGroupListRequest request)
+        public async Task<ActionResult<GetGroupListResult>> GetGroupList([FromBody]GetGroupListRequest request)
         {
             return await _groupClient.GetGroupListAsync(request);
+        }
+
+        [HttpPost]
+        public async Task<ActionResult<CreateGroupResult>> CreateGroup([FromBody] CreateGroupRequest request)
+        {
+            return await _groupClient.CreateGroupAsync(request);
+        }
+
+        [HttpPost]
+        public async Task<ActionResult<GetGroupInfoResult>> GetGroupInfo([FromBody] GetGroupInfoRequest request)
+        {
+            return await _groupClient.GetGroupInfoAsync(request);
         }
     }
 }

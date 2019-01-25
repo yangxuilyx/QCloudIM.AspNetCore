@@ -12,7 +12,9 @@ namespace QCloudIM.AspNetCore
 {
     public abstract class QCloudIMClient
     {
-        private const string BaseUrl = "https://console.tim.qq.com/v4/";
+        private const string BaseUrl = "https://console.tim.qq.com";
+
+        protected string Version = "v4";
 
         private readonly string _appId;
         private readonly string _identifier;
@@ -62,7 +64,7 @@ namespace QCloudIM.AspNetCore
         private string CreateUrl(string serviceName, string command)
         {
             return
-                $"{BaseUrl}{serviceName}/{command}?sdkappid={_appId}&identifier={_identifier}&usersig={GetUserSig()}&random={Math.Abs(new Random().Next()).ToString()}&contenttype=json";
+                $"{BaseUrl}/{Version}/{serviceName}/{command}?sdkappid={_appId}&identifier={_identifier}&usersig={GetUserSig()}&random={Math.Abs(new Random().Next()).ToString()}&contenttype=json";
         }
         private RestRequest GetRestRequest<TRequest>(string serviceName, string actionName, TRequest request) where TRequest : QCloudIMRequest, new()
         {

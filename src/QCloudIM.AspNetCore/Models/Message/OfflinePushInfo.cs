@@ -19,9 +19,6 @@ namespace QCloudIM.AspNetCore.Models.Message
 
     public class OfflinePushInfo
     {
-
-
-
         [JsonProperty("PushFlag")]
         public int PushFlag { get; set; }
 
