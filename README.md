@@ -13,6 +13,10 @@ https://github.com/antony10291029/QCloudIMSDK</a>
 
 1.引入项目
 
+```
+Install-Package QCloudIM.AspNetCore -Version 1.0.0
+```
+
 2.在 StartUp 中注册并配置参数
 
 ```C#
