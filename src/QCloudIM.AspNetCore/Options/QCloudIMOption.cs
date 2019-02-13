@@ -25,5 +25,10 @@ namespace QCloudIM.AspNetCore.Options
         /// 公钥，腾讯云IM后台下载
         /// </summary>
         public string PublicKey { get; set; }
+
+        /// <summary>
+        /// 签名过期时间，单位秒
+        /// </summary>
+        public int Expire { get; set; }
     }
 }

@@ -21,6 +21,7 @@ namespace QCloudIM.AspNetCore
 
         private readonly string _privateKey;
         private readonly string _publicKey;
+        private readonly int _expire;
 
         private readonly RestClient _restClient;
 
@@ -30,6 +31,7 @@ namespace QCloudIM.AspNetCore
             _privateKey = qCloudImOptions.Value.PrivateKey;
             _publicKey = qCloudImOptions.Value.PublicKey;
             _identifier = qCloudImOptions.Value.Identifier;
+            _expire = qCloudImOptions.Value.Expire;
 
             _restClient = new RestClient(BaseUrl);
         }
@@ -58,7 +60,7 @@ namespace QCloudIM.AspNetCore
         }
         private string GetUserSig()
         {
-            return TlsSignature.GenUserSig(_appId, _privateKey, _identifier, 300);
+            return TlsSignature.GenUserSig(_appId, _privateKey, _identifier, _expire);
         }
 
         private string CreateUrl(string serviceName, string command)
@@ -66,6 +68,7 @@ namespace QCloudIM.AspNetCore
             return
                 $"{BaseUrl}/{Version}/{serviceName}/{command}?sdkappid={_appId}&identifier={_identifier}&usersig={GetUserSig()}&random={Math.Abs(new Random().Next()).ToString()}&contenttype=json";
         }
+
         private RestRequest GetRestRequest<TRequest>(string serviceName, string actionName, TRequest request) where TRequest : QCloudIMRequest, new()
         {
             string url = CreateUrl(serviceName, actionName);
