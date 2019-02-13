@@ -9,6 +9,9 @@
     <Description>腾讯云IM服务端Sdk .NetCore实现</Description>
     <PackageProjectUrl>https://github.com/yangxuilyx/QCloudIM.AspNetCore</PackageProjectUrl>
     <RepositoryUrl>https://github.com/yangxuilyx/QCloudIM.AspNetCore</RepositoryUrl>
+    <Version>1.0.1</Version>
+    <AssemblyVersion>1.0.1.1</AssemblyVersion>
+    <FileVersion>1.0.1.1</FileVersion>
   </PropertyGroup>
 
   <ItemGroup>
