@@ -19,7 +19,7 @@ namespace QCloudIM.AspNetCore.Utility
         /// <returns>生成的userSig</returns>
         public static string GenUserSig(string appid, string privateKey, string userid, int expire)
         {
-            var time = DateTime.Now.Ticks / 1000;
+            var time = DateTime.Now.Ticks;
             String serialString =
                 "TLS.appid_at_3rd:" + 0 + "\n" +
                 "TLS.account_type:" + 0 + "\n" +
