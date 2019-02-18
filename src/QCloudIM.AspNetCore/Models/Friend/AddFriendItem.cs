@@ -8,8 +8,6 @@ namespace QCloudIM.AspNetCore.Models.Friend
 
     public class AddFriendItem
     {
-     
-
         [JsonProperty("To_Account")]
         public string ToAccount { get; set; }
 
@@ -26,7 +24,7 @@ namespace QCloudIM.AspNetCore.Models.Friend
         public string AddWording { get; set; }
 
         [JsonProperty("AddTime")]
-        public long AddTime
+        public long? AddTime
         {
             get; set;
         }

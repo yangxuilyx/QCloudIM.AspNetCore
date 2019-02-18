@@ -5,21 +5,21 @@ using Newtonsoft.Json.Serialization;
 
 namespace QCloudIM.AspNetCore.Models.Sns
 {
-	 
-	public class FriendAddRequest : QCloudIMRequest
-	{ 
 
-            [JsonProperty("From_Account")]
-	    public  string FromAccount { get; set; }
+    public class FriendAddRequest : QCloudIMRequest
+    {
 
-	    [JsonProperty("AddFriendItem")]
-        public  IList<AddFriendItem> AddFriendItem { get; set; }
+        [JsonProperty("From_Account")]
+        public string FromAccount { get; set; }
 
-	    [JsonProperty("AddType")]
-        public  string AddType { get; set; }
+        [JsonProperty("AddFriendItem")]
+        public IList<AddFriendItem> AddFriendItem { get; set; }
 
-	    [JsonProperty("ForceAddFlags")]
-        public  int ForceAddFlags { get; set; }
-	}
+        [JsonProperty("AddType")]
+        public string AddType { get; set; }
+
+        [JsonProperty("ForceAddFlags")]
+        public int? ForceAddFlags { get; set; }
+    }
 
 }
