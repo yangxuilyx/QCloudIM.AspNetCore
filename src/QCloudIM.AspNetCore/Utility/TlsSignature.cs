@@ -19,8 +19,8 @@ namespace QCloudIM.AspNetCore.Utility
         /// <returns>生成的userSig</returns>
         public static string GenUserSig(string appid, string privateKey, string userid, int expire)
         {
-            var time = DateTime.Now.Ticks;
-            String serialString =
+            var time = TimeUtils.ConvertDateTimeToShortInt(DateTime.Now);
+            string serialString =
                 "TLS.appid_at_3rd:" + 0 + "\n" +
                 "TLS.account_type:" + 0 + "\n" +
                 "TLS.identifier:" + userid + "\n" +
@@ -30,7 +30,7 @@ namespace QCloudIM.AspNetCore.Utility
 
             var sign = Convert.ToBase64String(Sign(privateKey, Encoding.UTF8.GetBytes(serialString)));
 
-            String jsonString = "{"
+            string jsonString = "{"
                                 + "\"TLS.account_type\":\"" + 0 + "\","
                                 + "\"TLS.identifier\":\"" + userid + "\","
                                 + "\"TLS.appid_at_3rd\":\"" + 0 + "\","

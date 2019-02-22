@@ -39,10 +39,10 @@ namespace QCloudIM.AspNetCore.Models.Groups
         [JsonProperty("FaceUrl")]
         public string FaceUrl { get; set; }
         /// <summary>
-        /// 最大群成员数量（选填）最大为10000，不填默认为2000个。
+        /// 最大群成员数量（选填）最大为10000，不填默认为200个。
         /// </summary>
         [JsonProperty("MaxMemberCount")]
-        public int MaxMemberCount { get; set; }
+        public int? MaxMemberCount { get; set; }
         /// <summary>
         /// 申请加群处理方式（选填）包含FreeAccess（自由加入），NeedPermission（需要验证），DisableApply（禁止加群），
 	    ///不填默认为NeedPermission（需要验证）
