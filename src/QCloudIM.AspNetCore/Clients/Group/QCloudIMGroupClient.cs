@@ -2,6 +2,7 @@
 using Microsoft.Extensions.Options;
 using QCloudIM.AspNetCore.Models.Groups;
 using QCloudIM.AspNetCore.Options;
+using QCloudIM.AspNetCore.Utility;
 
 namespace QCloudIM.AspNetCore.Clients.Group
 {
@@ -10,7 +11,7 @@ namespace QCloudIM.AspNetCore.Clients.Group
     /// </summary>
     public class QCloudIMGroupClient : QCloudIMClient, IQCloudIMGroupClient
     {
-        public QCloudIMGroupClient(IOptions<QCloudIMOption> qCloudImOptions) : base(qCloudImOptions)
+        public QCloudIMGroupClient(IOptions<QCloudIMOption> qCloudImOptions, ITlsSignature tlsSignature) : base(qCloudImOptions, tlsSignature)
         {
         }
 

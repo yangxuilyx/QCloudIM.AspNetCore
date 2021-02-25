@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.Extensions.Options;
 using QCloudIM.AspNetCore.Models.Config;
 using QCloudIM.AspNetCore.Options;
+using QCloudIM.AspNetCore.Utility;
 
 namespace QCloudIM.AspNetCore.Clients.Config
 {
@@ -13,7 +14,7 @@ namespace QCloudIM.AspNetCore.Clients.Config
     /// </summary>
     public class QCloudIMConfigClient : QCloudIMClient, IQCloudIMConfigClient
     {
-        public QCloudIMConfigClient(IOptions<QCloudIMOption> qCloudImOptions) : base(qCloudImOptions)
+        public QCloudIMConfigClient(IOptions<QCloudIMOption> qCloudImOptions, ITlsSignature tlsSignature) : base(qCloudImOptions, tlsSignature)
         {
         }
 
@@ -42,5 +43,7 @@ namespace QCloudIM.AspNetCore.Clients.Config
         {
             return await RequestAsync<GetNoSpeakingRequest, GetNoSpeakingResult>(ServiceName, "getnospeaking", request);
         }
+
+    
     }
 }

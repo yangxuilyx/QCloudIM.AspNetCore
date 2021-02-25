@@ -2,12 +2,13 @@
 using Microsoft.Extensions.Options;
 using QCloudIM.AspNetCore.Models.Dirtywords;
 using QCloudIM.AspNetCore.Options;
+using QCloudIM.AspNetCore.Utility;
 
 namespace QCloudIM.AspNetCore.Clients.Dirtywords
 {
     public class QCloudIMDirtywordsClient : QCloudIMClient, IQCloudIMDirtywordsClient
     {
-        public QCloudIMDirtywordsClient(IOptions<QCloudIMOption> qCloudImOptions) : base(qCloudImOptions)
+        public QCloudIMDirtywordsClient(IOptions<QCloudIMOption> qCloudImOptions, ITlsSignature tlsSignature) : base(qCloudImOptions, tlsSignature)
         {
         }
 
@@ -46,5 +47,7 @@ namespace QCloudIM.AspNetCore.Clients.Dirtywords
         {
             return await RequestAsync<DeleteDirtyWordRequest, DeleteDirtyWordResult>(ServiceName, "delete", request);
         }
+
+    
     }
 }

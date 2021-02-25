@@ -4,11 +4,22 @@ using Org.BouncyCastle.Security;
 using System;
 using System.Linq;
 using System.Text;
+using Microsoft.Extensions.Options;
+using QCloudIM.AspNetCore.Options;
 
 namespace QCloudIM.AspNetCore.Utility
 {
-    public class TlsSignature
+    public class TlsSignature : ITlsSignature
     {
+        private readonly int sdkappid;
+        private readonly string key;
+
+        public TlsSignature(IOptions<QCloudIMOption> qCloudImoOptions)
+        {
+            sdkappid = Convert.ToInt32(qCloudImoOptions.Value.SdkAppid);
+            key = qCloudImoOptions.Value.PrivateKey;
+        }
+
         /// <summary>
         /// 获取用户sign
         /// </summary>
@@ -17,24 +28,24 @@ namespace QCloudIM.AspNetCore.Utility
         /// <param name="userid">用户名</param>
         /// <param name="expire">userSig有效期，出于安全考虑建议为300秒，您可以根据您的业务场景设置其他值。</param>
         /// <returns>生成的userSig</returns>
-        public static string GenUserSig(string appid, string privateKey, string userid, int expire)
+        public string GenUserSig(string userid, int expire = 180 * 86400)
         {
             var time = TimeUtils.ConvertDateTimeToShortInt(DateTime.Now);
             string serialString =
                 "TLS.appid_at_3rd:" + 0 + "\n" +
                 "TLS.account_type:" + 0 + "\n" +
                 "TLS.identifier:" + userid + "\n" +
-                "TLS.sdk_appid:" + appid + "\n" +
+                "TLS.sdk_appid:" + sdkappid + "\n" +
                 "TLS.time:" + time + "\n" +
                 "TLS.expire_after:" + expire + "\n";
 
-            var sign = Convert.ToBase64String(Sign(privateKey, Encoding.UTF8.GetBytes(serialString)));
+            var sign = Convert.ToBase64String(Sign(key, Encoding.UTF8.GetBytes(serialString)));
 
             string jsonString = "{"
                                 + "\"TLS.account_type\":\"" + 0 + "\","
                                 + "\"TLS.identifier\":\"" + userid + "\","
                                 + "\"TLS.appid_at_3rd\":\"" + 0 + "\","
-                                + "\"TLS.sdk_appid\":\"" + appid + "\","
+                                + "\"TLS.sdk_appid\":\"" + sdkappid + "\","
                                 + "\"TLS.expire_after\":\"" + expire + "\","
                                 + "\"TLS.sig\":\"" + sign + "\","
                                 + "\"TLS.time\":\"" + time + "\","

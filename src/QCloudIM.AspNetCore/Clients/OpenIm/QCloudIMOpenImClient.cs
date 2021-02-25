@@ -2,6 +2,7 @@
 using Microsoft.Extensions.Options;
 using QCloudIM.AspNetCore.Models.OpenIm;
 using QCloudIM.AspNetCore.Options;
+using QCloudIM.AspNetCore.Utility;
 
 namespace QCloudIM.AspNetCore.Clients.OpenIm
 {
@@ -10,7 +11,7 @@ namespace QCloudIM.AspNetCore.Clients.OpenIm
     /// </summary>
     public class QCloudIMOpenImClient : QCloudIMClient, IQCloudIMOpenImClient
     {
-        public QCloudIMOpenImClient(IOptions<QCloudIMOption> qCloudImOptions) : base(qCloudImOptions)
+        public QCloudIMOpenImClient(IOptions<QCloudIMOption> qCloudImOptions, ITlsSignature tlsSignature) : base(qCloudImOptions, tlsSignature)
         {
         }
 

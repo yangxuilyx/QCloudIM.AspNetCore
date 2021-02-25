@@ -2,6 +2,7 @@
 using Microsoft.Extensions.Options;
 using QCloudIM.AspNetCore.Models.Svc;
 using QCloudIM.AspNetCore.Options;
+using QCloudIM.AspNetCore.Utility;
 
 namespace QCloudIM.AspNetCore.Clients.Svc
 {
@@ -10,7 +11,7 @@ namespace QCloudIM.AspNetCore.Clients.Svc
     /// </summary>
     public class QCloudIMSvcClient : QCloudIMClient, IQCloudIMSvcClient
     {
-        public QCloudIMSvcClient(IOptions<QCloudIMOption> qCloudImOptions) : base(qCloudImOptions)
+        public QCloudIMSvcClient(IOptions<QCloudIMOption> qCloudImOptions, ITlsSignature tlsSignature) : base(qCloudImOptions, tlsSignature)
         {
         }
 

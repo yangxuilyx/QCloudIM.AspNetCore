@@ -2,6 +2,7 @@
 using Microsoft.Extensions.Options;
 using QCloudIM.AspNetCore.Models.OLogin;
 using QCloudIM.AspNetCore.Options;
+using QCloudIM.AspNetCore.Utility;
 
 namespace QCloudIM.AspNetCore.Clients.OLogin
 {
@@ -10,7 +11,7 @@ namespace QCloudIM.AspNetCore.Clients.OLogin
     /// </summary>
     public class QCloudIMOLoginClient : QCloudIMClient, IQCloudIMOLoginClient
     {
-        public QCloudIMOLoginClient(IOptions<QCloudIMOption> qCloudImOptions) : base(qCloudImOptions)
+        public QCloudIMOLoginClient(IOptions<QCloudIMOption> qCloudImOptions, ITlsSignature tlsSignature) : base(qCloudImOptions, tlsSignature)
         {
         }
 

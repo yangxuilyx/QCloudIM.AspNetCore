@@ -2,6 +2,7 @@
 using Microsoft.Extensions.Options;
 using QCloudIM.AspNetCore.Models.Profile;
 using QCloudIM.AspNetCore.Options;
+using QCloudIM.AspNetCore.Utility;
 
 namespace QCloudIM.AspNetCore.Clients.Profile
 {
@@ -10,7 +11,7 @@ namespace QCloudIM.AspNetCore.Clients.Profile
     /// </summary>
     public class QCloudIMProfileClient : QCloudIMClient, IQCloudIMProfileClient
     {
-        public QCloudIMProfileClient(IOptions<QCloudIMOption> qCloudImOptions) : base(qCloudImOptions)
+        public QCloudIMProfileClient(IOptions<QCloudIMOption> qCloudImOptions, ITlsSignature tlsSignature) : base(qCloudImOptions, tlsSignature)
         {
         }
 

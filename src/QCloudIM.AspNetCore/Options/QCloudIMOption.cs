@@ -17,7 +17,7 @@ namespace QCloudIM.AspNetCore.Options
         public string Identifier { get; set; }
 
         /// <summary>
-        /// 私钥，腾讯云IM后台下载
+        /// 私钥，v2版本Key
         /// </summary>
         public string PrivateKey { get; set; }
 
@@ -30,5 +30,7 @@ namespace QCloudIM.AspNetCore.Options
         /// 签名过期时间，单位秒
         /// </summary>
         public int Expire { get; set; }
+
+        public string Version { get; set; } = "v2";
     }
 }

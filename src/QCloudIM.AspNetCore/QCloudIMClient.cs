@@ -7,6 +7,7 @@ using QCloudIM.AspNetCore.Models;
 using QCloudIM.AspNetCore.Options;
 using QCloudIM.AspNetCore.Utility;
 using RestSharp;
+using tencentyun;
 
 namespace QCloudIM.AspNetCore
 {
@@ -25,8 +26,11 @@ namespace QCloudIM.AspNetCore
 
         private readonly RestClient _restClient;
 
-        protected QCloudIMClient(IOptions<QCloudIMOption> qCloudImOptions)
+        private readonly ITlsSignature _tlsSignature;
+
+        protected QCloudIMClient(IOptions<QCloudIMOption> qCloudImOptions, ITlsSignature tlsSignature)
         {
+            _tlsSignature = tlsSignature;
             _appId = qCloudImOptions.Value.SdkAppid;
             _privateKey = qCloudImOptions.Value.PrivateKey;
             _publicKey = qCloudImOptions.Value.PublicKey;
@@ -60,7 +64,8 @@ namespace QCloudIM.AspNetCore
         }
         private string GetUserSig()
         {
-            return TlsSignature.GenUserSig(_appId, _privateKey, _identifier, _expire);
+            string sig = _tlsSignature.GenUserSig(_identifier);
+            return sig;
         }
 
         private string CreateUrl(string serviceName, string command)

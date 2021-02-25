@@ -14,7 +14,7 @@ https://github.com/antony10291029/QCloudIMSDK</a>
 1.引入项目
 
 ```
-Install-Package QCloudIM.AspNetCore -Version 1.0.0
+Install-Package QCloudIM.AspNetCore -Version 1.0.5
 ```
 
 2.在 StartUp 中注册并配置参数
@@ -25,6 +25,9 @@ Install-Package QCloudIM.AspNetCore -Version 1.0.0
                 options.Identifier = "";
                 options.SdkAppid = "";
                 options.PrivateKey = "";
+
+                // 使用v1版本
+                //options.Version = "v1";
             });
 ```
 
@@ -37,7 +40,7 @@ Install-Package QCloudIM.AspNetCore -Version 1.0.0
   "QCloudIM": {
     "Identifier": "",
     "SdkAppid": "",
-    "PrivateKey": ""
+    "PrivateKey": "",
   }
 }
 ```
@@ -46,6 +49,9 @@ Install-Package QCloudIM.AspNetCore -Version 1.0.0
 
 ```C#
 services.Configure<QCloudIMOption>(Configuration.GetSection("QCloudIM"));
+
+// v1
+// services.Replace(ServiceDescriptor.Singleton<ITlsSignature, TlsSignature>());
 ```
 
 4.在业务类中注入对应的 client 并调用。
